@@ -6,9 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class PageVisitor {
 
-	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
-		
+	public static void main(String[] args) throws InterruptedException {		
 		WebDriver driver = new FirefoxDriver();
 		
 		driver.get("https://www.google.com");

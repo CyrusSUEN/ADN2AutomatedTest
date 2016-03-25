@@ -6,16 +6,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import utility.OSValidator;
+
 public class PageVisitor {
 
 	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
-		
+		String path = "driver/" + OSValidator.getOS() + "/chromedriver";
 		System.setProperty("webdriver.chrome.driver", 
-				new java.io.File("driver/chromedriver").getAbsolutePath());
+				new java.io.File(path).getAbsolutePath());
 		WebDriver driver = new ChromeDriver();
-		
-		//driver.manage().window().maximize();
 		
 		driver.get("https://www.google.com/ncr");
 

@@ -3,6 +3,7 @@ package test;
 import static org.junit.Assert.*;
 
 import data.Websites;
+import utility.OSValidator;
 
 import java.io.IOException;
 
@@ -23,8 +24,9 @@ public class PageVisitOperaTest {
 
 	@BeforeClass
 	public static void createAndStartService() throws IOException {
+		String path = "driver/" + OSValidator.getOS() + "/operadriver";
 
-		service = new OperaDriverService.Builder().usingDriverExecutable(new java.io.File("driver/operadriver"))
+		service = new OperaDriverService.Builder().usingDriverExecutable(new java.io.File(path))
 				.usingAnyFreePort().build();
 		service.start();
 	}
