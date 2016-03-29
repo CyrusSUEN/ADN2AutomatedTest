@@ -14,10 +14,16 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.opera.OperaDriverService;
+import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class PageVisitOperaTest {
+	
+	// Assuming the path of AdNauseam2 repo is next to ADN2AutomatedTest's
+	// Change the following path if needed
+	private static String extensionFilePath = 
+			System.getProperty("user.dir") + "/../AdNauseam2/dist/build/adnauseam.opera.nex";	
 
 	private static OperaDriverService service;
 	private WebDriver driver;
@@ -38,7 +44,13 @@ public class PageVisitOperaTest {
 
 	@Before
 	public void createDriver() {
-		driver = new RemoteWebDriver(service.getUrl(), DesiredCapabilities.chrome());
+		OperaOptions options = new OperaOptions();
+		options.addExtensions(new java.io.File(extensionFilePath));
+		
+		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+		capabilities.setCapability(OperaOptions.CAPABILITY, options);
+		
+		driver = new RemoteWebDriver(service.getUrl(), capabilities);
 	}
 
 	@After
